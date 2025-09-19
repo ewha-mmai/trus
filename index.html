@@ -7,16 +7,31 @@
 
   <!-- Bulma CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <!-- Font Awesome -->
+  <!-- Font Awesome (optional for header buttons) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <!-- Bulma Carousel CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.24/dist/css/bulma-carousel.min.css">
 
   <style>
-    .carousel .item { padding: 12px; }
-    audio { width: 100%; max-width: 420px; }
-    .subnote { margin-top: -6px; margin-bottom: 16px; color:#6b7280; }
-    .has-tight { margin-bottom: .75rem; }
+    /* 표 안 오디오를 적당한 크기로 중앙 정렬 */
+    .audio-cell {
+      text-align: center;
+      vertical-align: middle !important;
+    }
+    .audio-cell audio {
+      width: 100%;
+      max-width: 360px;   /* 필요 시 300~420 사이로 조절 */
+    }
+    .table thead th {
+      text-align: center;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    .row-label {
+      white-space: nowrap;
+      text-align: center;
+      font-weight: 600;
+    }
+    /* 페이지 폭 제한 */
+    .container.is-max-desktop { max-width: 980px; }
   </style>
 </head>
 <body>
@@ -65,177 +80,138 @@
   </div>
 </section>
 
-<!-- 1) FORBIDDEN REFERENCE -->
+<!-- MODEL COMPARISON TABLE -->
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-4 has-text-centered">Forbidden Reference</h2>
-    <p class="has-text-centered subnote">Reference audios of the forbidden speaker</p>
+    <h2 class="title is-4 has-text-centered">Model Comparison</h2>
+    <p class="has-text-centered has-text-grey">Forbidden Reference · TruS (ours) · SGU · TGU</p>
 
-    <div id="forbiddenSlider" class="carousel">
-      <div class="item has-text-centered">
-        <p class="has-text-weight-semibold has-tight">Ref #1</p>
-        <audio controls preload="none">
-          <source src="static/audio/forbidden/ref_001.wav" type="audio/wav">
-        </audio>
-      </div>
+    <div class="table-container">
+      <table class="table is-fullwidth is-striped is-hoverable">
+        <thead>
+          <tr>
+            <th class="row-label">Case</th>
+            <th>Forbidden Reference</th>
+            <th>TruS (ours)</th>
+            <th>SGU</th>
+            <th>TGU</th>
+            <!-- 필요하면 FT 열 추가
+            <th>FT</th>
+            -->
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Row: Case 1 -->
+          <tr>
+            <td class="row-label">Case 1</td>
+            <td class="audio-cell">
+              <audio controls preload="none">
+                <source src="static/audio/case1_forbidden.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="none">
+                <source src="static/audio/case1_trus.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="none">
+                <source src="static/audio/case1_sgu.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="none">
+                <source src="static/audio/case1_tgu.wav" type="audio/wav">
+              </audio>
+            </td>
+          </tr>
 
-      <div class="item has-text-centered">
-        <p class="has-text-weight-semibold has-tight">Ref #2</p>
-        <audio controls preload="none">
-          <source src="static/audio/forbidden/ref_002.wav" type="audio/wav">
-        </audio>
-      </div>
+          <!-- Row: Case 2 -->
+          <tr>
+            <td class="row-label">Case 2</td>
+            <td class="audio-cell">
+              <audio controls preload="none">
+                <source src="static/audio/case2_forbidden.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="none">
+                <source src="static/audio/case2_trus.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="none">
+                <source src="static/audio/case2_sgu.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="none">
+                <source src="static/audio/case2_tgu.wav" type="audio/wav">
+              </audio>
+            </td>
+          </tr>
 
-      <div class="item has-text-centered">
-        <p class="has-text-weight-semibold has-tight">Ref #3</p>
-        <audio controls preload="none">
-          <source src="static/audio/forbidden/ref_003.wav" type="audio/wav">
-        </audio>
-      </div>
+          <!-- 더 추가하려면 행 복제 -->
+          <!--
+          <tr>
+            <td class="row-label">Case 3</td>
+            <td class="audio-cell"><audio controls preload="none"><source src="static/audio/case3_forbidden.wav" type="audio/wav"></audio></td>
+            <td class="audio-cell"><audio controls preload="none"><source src="static/audio/case3_trus.wav" type="audio/wav"></audio></td>
+            <td class="audio-cell"><audio controls preload="none"><source src="static/audio/case3_sgu.wav" type="audio/wav"></audio></td>
+            <td class="audio-cell"><audio controls preload="none"><source src="static/audio/case3_tgu.wav" type="audio/wav"></audio></td>
+          </tr>
+          -->
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
 
-<!-- 2) TRUS (OURS) -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-4 has-text-centered">TruS (ours)</h2>
-    <p class="has-text-centered subnote">Inference-time activation steering for identity unlearning</p>
-
-    <div id="trusSlider" class="carousel">
-      <div class="item has-text-centered">
-        <p class="has-text-weight-semibold has-tight">Sample #1</p>
-        <audio controls preload="none">
-          <source src="static/audio/trus/trus_001.wav" type="audio/wav">
-        </audio>
-      </div>
-
-      <div class="item has-text-centered">
-        <p class="has-text-weight-semibold has-tight">Sample #2</p>
-        <audio controls preload="none">
-          <source src="static/audio/trus/trus_002.wav" type="audio/wav">
-        </audio>
-      </div>
-
-      <div class="item has-text-centered">
-        <p class="has-text-weight-semibold has-tight">Sample #3</p>
-        <audio controls preload="none">
-          <source src="static/audio/trus/trus_003.wav" type="audio/wav">
-        </audio>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 3) SGU -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-4 has-text-centered">SGU</h2>
-    <p class="has-text-centered subnote">SGU-based unlearning results</p>
-
-    <div id="sguSlider" class="carousel">
-      <div class="item has-text-centered">
-        <p class="has-text-weight-semibold has-tight">SGU #1</p>
-        <audio controls preload="none">
-          <source src="static/audio/sgu/sgu_001.wav" type="audio/wav">
-        </audio>
-      </div>
-
-      <div class="item has-text-centered">
-        <p class="has-text-weight-semibold has-tight">SGU #2</p>
-        <audio controls preload="none">
-          <source src="static/audio/sgu/sgu_002.wav" type="audio/wav">
-        </audio>
-      </div>
-
-      <div class="item has-text-centered">
-        <p class="has-text-weight-semibold has-tight">SGU #3</p>
-        <audio controls preload="none">
-          <source src="static/audio/sgu/sgu_003.wav" type="audio/wav">
-        </audio>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 4) TGU -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-4 has-text-centered">TGU</h2>
-    <p class="has-text-centered subnote">TGU-based unlearning results</p>
-
-    <div id="tguSlider" class="carousel">
-      <div class="item has-text-centered">
-        <p class="has-text-weight-semibold has-tight">TGU #1</p>
-        <audio controls preload="none">
-          <source src="static/audio/tgu/tgu_001.wav" type="audio/wav">
-        </audio>
-      </div>
-
-      <div class="item has-text-centered">
-        <p class="has-text-weight-semibold has-tight">TGU #2</p>
-        <audio controls preload="none">
-          <source src="static/audio/tgu/tgu_002.wav" type="audio/wav">
-        </audio>
-      </div>
-
-      <div class="item has-text-centered">
-        <p class="has-text-weight-semibold has-tight">TGU #3</p>
-        <audio controls preload="none">
-          <source src="static/audio/tgu/tgu_003.wav" type="audio/wav">
-        </audio>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Emotion Consistency -->
+<!-- EMOTION CONSISTENCY TABLE -->
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-4 has-text-centered">Emotion Consistency</h2>
-    <p class="has-text-centered subnote">Reference Emotion vs. TruS (ours)</p>
+    <p class="has-text-centered has-text-grey">Reference Emotion vs. TruS (ours)</p>
 
-    <div id="emotionSlider" class="carousel">
-      <!-- Emotion A -->
-      <div class="item">
-        <p class="has-text-centered has-text-weight-semibold">Emotion A</p>
-        <div class="columns is-variable is-4">
-          <div class="column has-text-centered">
-            <p>Reference Emotion</p>
-            <audio controls preload="none">
-              <source src="static/audio/emotion/emotionA_ref.wav" type="audio/wav">
-            </audio>
-          </div>
-          <div class="column has-text-centered">
-            <p>TruS (ours)</p>
-            <audio controls preload="none">
-              <source src="static/audio/emotion/emotionA_trus.wav" type="audio/wav">
-            </audio>
-          </div>
-        </div>
-      </div>
-
-      <!-- Emotion B -->
-      <div class="item">
-        <p class="has-text-centered has-text-weight-semibold">Emotion B</p>
-        <div class="columns is-variable is-4">
-          <div class="column has-text-centered">
-            <p>Reference Emotion</p>
-            <audio controls preload="none">
-              <source src="static/audio/emotion/emotionB_ref.wav" type="audio/wav">
-            </audio>
-          </div>
-          <div class="column has-text-centered">
-            <p>TruS (ours)</p>
-            <audio controls preload="none">
-              <source src="static/audio/emotion/emotionB_trus.wav" type="audio/wav">
-            </audio>
-          </div>
-        </div>
-      </div>
-
-      <!-- 필요 시 더 추가 -->
-      <!-- <div class="item"> ... Emotion C ... </div> -->
+    <div class="table-container">
+      <table class="table is-fullwidth is-striped is-hoverable">
+        <thead>
+          <tr>
+            <th class="row-label">Emotion</th>
+            <th>Reference Emotion</th>
+            <th>TruS (ours)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">Emotion A</td>
+            <td class="audio-cell">
+              <audio controls preload="none">
+                <source src="static/audio/emotion/emotionA_ref.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="none">
+                <source src="static/audio/emotion/emotionA_trus.wav" type="audio/wav">
+              </audio>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-label">Emotion B</td>
+            <td class="audio-cell">
+              <audio controls preload="none">
+                <source src="static/audio/emotion/emotionB_ref.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="none">
+                <source src="static/audio/emotion/emotionB_trus.wav" type="audio/wav">
+              </audio>
+            </td>
+          </tr>
+          <!-- 더 추가하려면 행 복제 -->
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -249,28 +225,6 @@
     </p>
   </div>
 </footer>
-
-<!-- Bulma Carousel JS -->
-<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.24/dist/js/bulma-carousel.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const opts = {
-      slidesToScroll: 1,
-      slidesToShow: 1,
-      autoplay: true,
-      pauseOnHover: true,
-      infinite: true,
-      duration: 320,
-      navigation: true,
-      pagination: true
-    };
-    bulmaCarousel.attach('#forbiddenSlider', opts);
-    bulmaCarousel.attach('#trusSlider', opts);
-    bulmaCarousel.attach('#sguSlider', opts);
-    bulmaCarousel.attach('#tguSlider', opts);
-    bulmaCarousel.attach('#emotionSlider', opts);
-  });
-</script>
 
 </body>
 </html>
