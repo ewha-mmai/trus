@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Erasing Your Voice Before It’s Heard: \\ Training-free Speaker Unlearning for Zero-shot Text-to-Speech</title>
+
+  <!-- Bulma CSS -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+<!-- HEADER -->
+<section class="hero is-light">
+  <div class="hero-body has-text-centered">
+    <div class="container is-max-desktop">
+      <h1 class="title is-3">
+        Erasing Your Voice Before It’s Heard: <br> Training-free Speaker Unlearning for Zero-shot Text-to-Speech
+      </h1>
+      <p class="subtitle is-6">
+        MyungJin Lee<sup>*</sup>, Eunji Lee<sup>*</sup>, Jiyoung Lee<sup>+</sup>
+      </p>
+      <p class="is-size-7">
+        <sup>1</sup>Ewha Womans University
+      </p>
+      <p class="is-size-7">* Corresponding author: lee.jiyoung@ewha.ac.kr</p>
+
+      <div class="buttons is-centered" style="margin-top: 1rem;">
+        <a href="[PAPER_LINK]" class="button is-dark is-rounded">
+          <span class="icon"><i class="fas fa-file-pdf"></i></span>
+          <span>Paper</span>
+        </a>
+        <a href="[CODE_LINK]" class="button is-link is-rounded">
+          <span class="icon"><i class="fab fa-github"></i></span>
+          <span>Code</span>
+        </a>
+        <a href="[SAMPLES_LINK]" class="button is-info is-rounded">
+          <span class="icon"><i class="fas fa-file-audio"></i></span>
+          <span>Samples</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABSTRACT -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-4 has-text-centered">Abstract</h2>
+    <div class="content has-text-justified">
+      <p>
+        Modern zero-shot text-to-speech (TTS) models offer unprecedented expressivity but also pose serious crime risks, as they can synthesize voices of individuals who never consented.
+        Existing unlearning approaches, reliant on retraining, are costly and limited to speakers seen in the training set.
+        We present TruS, a training-free speaker unlearning framework that shifts the paradigm from data deletion to inference-time control.
+        TruS steers identity-specific hidden activations to suppress target speakers while preserving other attributes (\eg, prosody and emotion).
+        Experiments on F5-TTS show that TruS effectively forgets both seen and unseen speakers without retraining, establishing a scalable safeguard for speech 
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-4 has-text-centered">Audio Demo</h2>
+
+    <div class="columns">
+      <div class="column has-text-centered">
+        <p><b>Forget Reference</b></p>
+        <audio controls>
+          <source src="static/audio/sample_ref.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="column has-text-centered">
+        <p><b>Baseline (No Steering)</b></p>
+        <audio controls>
+          <source src="static/audio/sample_baseline.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="column has-text-centered">
+        <p><b>Ours (Steering)</b></p>
+        <audio controls>
+          <source src="static/audio/sample_steering.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column has-text-centered">
+        <p><b>Remain Speaker</b></p>
+        <audio controls>
+          <source src="static/audio/remain1.wav" type="audio/wav">
+        </audio>
+      </div>
+      <div class="column has-text-centered">
+        <p><b>Unseen Speaker</b></p>
+        <audio controls>
+          <source src="static/audio/unseen1.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      This website is licensed under
+      <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
