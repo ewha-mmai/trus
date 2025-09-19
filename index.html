@@ -3,16 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Erasing Your Voice Before It’s Heard: \\ Training-free Speaker Unlearning for Zero-shot Text-to-Speech</title>
+  <title>Erasing Your Voice Before It’s Heard: Training-free Speaker Unlearning for Zero-shot Text-to-Speech</title>
 
   <!-- Bulma CSS -->
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Bulma Carousel CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.24/dist/css/bulma-carousel.min.css">
 
+  <style>
+    .carousel .item { padding: 12px; }
+    audio { width: 100%; max-width: 420px; }
+    .subnote { margin-top: -6px; margin-bottom: 16px; color:#6b7280; }
+    .has-tight { margin-bottom: .75rem; }
+  </style>
 </head>
 <body>
 
@@ -26,23 +31,18 @@
       <p class="subtitle is-6">
         MyungJin Lee<sup>*</sup>, Eunji Lee<sup>*</sup>, Jiyoung Lee<sup>+</sup>
       </p>
-      <p class="is-size-7">
-        <sup>1</sup>Ewha Womans University
-      </p>
+      <p class="is-size-7"><sup>1</sup>Ewha Womans University</p>
       <p class="is-size-7">* Corresponding author: lee.jiyoung@ewha.ac.kr</p>
 
       <div class="buttons is-centered" style="margin-top: 1rem;">
         <a href="[PAPER_LINK]" class="button is-dark is-rounded">
-          <span class="icon"><i class="fas fa-file-pdf"></i></span>
-          <span>Paper</span>
+          <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
         </a>
         <a href="[CODE_LINK]" class="button is-link is-rounded">
-          <span class="icon"><i class="fab fa-github"></i></span>
-          <span>Code</span>
+          <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
         </a>
         <a href="[SAMPLES_LINK]" class="button is-info is-rounded">
-          <span class="icon"><i class="fas fa-file-audio"></i></span>
-          <span>Samples</span>
+          <span class="icon"><i class="fas fa-file-audio"></i></span><span>Samples</span>
         </a>
       </div>
     </div>
@@ -58,52 +58,184 @@
         Modern zero-shot text-to-speech (TTS) models offer unprecedented expressivity but also pose serious crime risks, as they can synthesize voices of individuals who never consented.
         Existing unlearning approaches, reliant on retraining, are costly and limited to speakers seen in the training set.
         We present TruS, a training-free speaker unlearning framework that shifts the paradigm from data deletion to inference-time control.
-        TruS steers identity-specific hidden activations to suppress target speakers while preserving other attributes (\eg, prosody and emotion).
-        Experiments on F5-TTS show that TruS effectively forgets both seen and unseen speakers without retraining, establishing a scalable safeguard for speech 
+        TruS steers identity-specific hidden activations to suppress target speakers while preserving other attributes (e.g., prosody and emotion).
+        Experiments on F5-TTS show that TruS effectively forgets both seen and unseen speakers without retraining, establishing a scalable safeguard for speech.
       </p>
     </div>
   </div>
 </section>
 
-<!-- DEMO -->
+<!-- 1) FORBIDDEN REFERENCE -->
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-4 has-text-centered">Audio Demo</h2>
+    <h2 class="title is-4 has-text-centered">Forbidden Reference</h2>
+    <p class="has-text-centered subnote">Reference audios of the forbidden speaker</p>
 
-    <div class="columns">
-      <div class="column has-text-centered">
-        <p><b>Forget Reference</b></p>
-        <audio controls>
-          <source src="static/audio/sample_ref.wav" type="audio/wav">
+    <div id="forbiddenSlider" class="carousel">
+      <div class="item has-text-centered">
+        <p class="has-text-weight-semibold has-tight">Ref #1</p>
+        <audio controls preload="none">
+          <source src="static/audio/forbidden/ref_001.wav" type="audio/wav">
         </audio>
       </div>
-      <div class="column has-text-centered">
-        <p><b>Baseline (No Steering)</b></p>
-        <audio controls>
-          <source src="static/audio/sample_baseline.wav" type="audio/wav">
+
+      <div class="item has-text-centered">
+        <p class="has-text-weight-semibold has-tight">Ref #2</p>
+        <audio controls preload="none">
+          <source src="static/audio/forbidden/ref_002.wav" type="audio/wav">
         </audio>
       </div>
-      <div class="column has-text-centered">
-        <p><b>Ours (Steering)</b></p>
-        <audio controls>
-          <source src="static/audio/sample_steering.wav" type="audio/wav">
+
+      <div class="item has-text-centered">
+        <p class="has-text-weight-semibold has-tight">Ref #3</p>
+        <audio controls preload="none">
+          <source src="static/audio/forbidden/ref_003.wav" type="audio/wav">
         </audio>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="columns">
-      <div class="column has-text-centered">
-        <p><b>Remain Speaker</b></p>
-        <audio controls>
-          <source src="static/audio/remain1.wav" type="audio/wav">
+<!-- 2) TRUS (OURS) -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-4 has-text-centered">TruS (ours)</h2>
+    <p class="has-text-centered subnote">Inference-time activation steering for identity unlearning</p>
+
+    <div id="trusSlider" class="carousel">
+      <div class="item has-text-centered">
+        <p class="has-text-weight-semibold has-tight">Sample #1</p>
+        <audio controls preload="none">
+          <source src="static/audio/trus/trus_001.wav" type="audio/wav">
         </audio>
       </div>
-      <div class="column has-text-centered">
-        <p><b>Unseen Speaker</b></p>
-        <audio controls>
-          <source src="static/audio/unseen1.wav" type="audio/wav">
+
+      <div class="item has-text-centered">
+        <p class="has-text-weight-semibold has-tight">Sample #2</p>
+        <audio controls preload="none">
+          <source src="static/audio/trus/trus_002.wav" type="audio/wav">
         </audio>
       </div>
+
+      <div class="item has-text-centered">
+        <p class="has-text-weight-semibold has-tight">Sample #3</p>
+        <audio controls preload="none">
+          <source src="static/audio/trus/trus_003.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3) SGU -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-4 has-text-centered">SGU</h2>
+    <p class="has-text-centered subnote">SGU-based unlearning results</p>
+
+    <div id="sguSlider" class="carousel">
+      <div class="item has-text-centered">
+        <p class="has-text-weight-semibold has-tight">SGU #1</p>
+        <audio controls preload="none">
+          <source src="static/audio/sgu/sgu_001.wav" type="audio/wav">
+        </audio>
+      </div>
+
+      <div class="item has-text-centered">
+        <p class="has-text-weight-semibold has-tight">SGU #2</p>
+        <audio controls preload="none">
+          <source src="static/audio/sgu/sgu_002.wav" type="audio/wav">
+        </audio>
+      </div>
+
+      <div class="item has-text-centered">
+        <p class="has-text-weight-semibold has-tight">SGU #3</p>
+        <audio controls preload="none">
+          <source src="static/audio/sgu/sgu_003.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4) TGU -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-4 has-text-centered">TGU</h2>
+    <p class="has-text-centered subnote">TGU-based unlearning results</p>
+
+    <div id="tguSlider" class="carousel">
+      <div class="item has-text-centered">
+        <p class="has-text-weight-semibold has-tight">TGU #1</p>
+        <audio controls preload="none">
+          <source src="static/audio/tgu/tgu_001.wav" type="audio/wav">
+        </audio>
+      </div>
+
+      <div class="item has-text-centered">
+        <p class="has-text-weight-semibold has-tight">TGU #2</p>
+        <audio controls preload="none">
+          <source src="static/audio/tgu/tgu_002.wav" type="audio/wav">
+        </audio>
+      </div>
+
+      <div class="item has-text-centered">
+        <p class="has-text-weight-semibold has-tight">TGU #3</p>
+        <audio controls preload="none">
+          <source src="static/audio/tgu/tgu_003.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Emotion Consistency -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-4 has-text-centered">Emotion Consistency</h2>
+    <p class="has-text-centered subnote">Reference Emotion vs. TruS (ours)</p>
+
+    <div id="emotionSlider" class="carousel">
+      <!-- Emotion A -->
+      <div class="item">
+        <p class="has-text-centered has-text-weight-semibold">Emotion A</p>
+        <div class="columns is-variable is-4">
+          <div class="column has-text-centered">
+            <p>Reference Emotion</p>
+            <audio controls preload="none">
+              <source src="static/audio/emotion/emotionA_ref.wav" type="audio/wav">
+            </audio>
+          </div>
+          <div class="column has-text-centered">
+            <p>TruS (ours)</p>
+            <audio controls preload="none">
+              <source src="static/audio/emotion/emotionA_trus.wav" type="audio/wav">
+            </audio>
+          </div>
+        </div>
+      </div>
+
+      <!-- Emotion B -->
+      <div class="item">
+        <p class="has-text-centered has-text-weight-semibold">Emotion B</p>
+        <div class="columns is-variable is-4">
+          <div class="column has-text-centered">
+            <p>Reference Emotion</p>
+            <audio controls preload="none">
+              <source src="static/audio/emotion/emotionB_ref.wav" type="audio/wav">
+            </audio>
+          </div>
+          <div class="column has-text-centered">
+            <p>TruS (ours)</p>
+            <audio controls preload="none">
+              <source src="static/audio/emotion/emotionB_trus.wav" type="audio/wav">
+            </audio>
+          </div>
+        </div>
+      </div>
+
+      <!-- 필요 시 더 추가 -->
+      <!-- <div class="item"> ... Emotion C ... </div> -->
     </div>
   </div>
 </section>
@@ -117,6 +249,28 @@
     </p>
   </div>
 </footer>
+
+<!-- Bulma Carousel JS -->
+<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.24/dist/js/bulma-carousel.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const opts = {
+      slidesToScroll: 1,
+      slidesToShow: 1,
+      autoplay: true,
+      pauseOnHover: true,
+      infinite: true,
+      duration: 320,
+      navigation: true,
+      pagination: true
+    };
+    bulmaCarousel.attach('#forbiddenSlider', opts);
+    bulmaCarousel.attach('#trusSlider', opts);
+    bulmaCarousel.attach('#sguSlider', opts);
+    bulmaCarousel.attach('#tguSlider', opts);
+    bulmaCarousel.attach('#emotionSlider', opts);
+  });
+</script>
 
 </body>
 </html>
