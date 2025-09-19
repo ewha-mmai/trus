@@ -25,8 +25,8 @@
     /* 오디오 플레이어 폭/정렬 통일 */
     .audio-cell audio {
       display: block;
-      width: 100%;          /* 셀 안에서 가로 100% */
-      max-width: 100%;      /* 브라우저 기본 max 제약 제거 */
+      width: 100%;
+      max-width: 100%;
       margin: 0 auto;
     }
 
@@ -71,78 +71,293 @@
   </div>
 </section>
 
-<!-- MODEL COMPARISON TABLE -->
+<!-- MODEL COMPARISON TABLE - forget (Emilia) -->
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-4 has-text-centered section-title">Model Comparison</h2>
-    <p class="has-text-centered subnote">Forbidden Reference · TruS (ours) · SGU · TGU</p>
+    <h2 class="title is-4 has-text-centered section-title">Model Comparison (Forget: Emilia)</h2>
+    <p class="has-text-centered subnote">Forget Reference (mp3) · TruS / FT / SGU / TGU (wav)</p>
 
     <div class="table-container">
       <table class="table is-fullwidth is-striped is-hoverable fixed">
-        <!-- colgroup으로 첫 열 폭 고정, 나머지는 균등 -->
         <colgroup>
           <col class="col-label">
-          <col>
-          <col>
-          <col>
-          <col>
+          <col><col><col><col><col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Case</th>
+            <th>Forget Reference</th>
+            <th>TruS (ours)</th>
+            <th>FT</th>
+            <th>SGU</th>
+            <th>TGU</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Case 1 -->
+          <tr>
+            <td>Case 1</td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_1_ref.mp3" type="audio/mpeg">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_1_trus.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_1_ft.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_1_sgu.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_1_tgu.wav" type="audio/wav">
+              </audio>
+            </td>
+          </tr>
+
+          <!-- Case 2 -->
+          <tr>
+            <td>Case 2</td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_2_ref.mp3" type="audio/mpeg">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_2_trus.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_2_ft.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_2_sgu.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_2_tgu.wav" type="audio/wav">
+              </audio>
+            </td>
+          </tr>
+
+          <!-- Case 3 -->
+          <tr>
+            <td>Case 3</td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_3_ref.mp3" type="audio/mpeg">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_3_trus.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_3_ft.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_3_sgu.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_3_tgu.wav" type="audio/wav">
+              </audio>
+            </td>
+          </tr>
+
+          <!-- Case 4 -->
+          <tr>
+            <td>Case 4</td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_4_ref.mp3" type="audio/mpeg">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_4_trus.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_4_ft.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_4_sgu.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forget_samples/E_4_tgu.wav" type="audio/wav">
+              </audio>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- MODEL COMPARISON TABLE - forbidden (Libri: unseen) -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-4 has-text-centered section-title">Model Comparison (Forbidden: Libri Unseen)</h2>
+    <p class="has-text-centered subnote">Forbidden Reference (flac) · TruS / FT / SGU / TGU (wav)</p>
+
+    <div class="table-container">
+      <table class="table is-fullwidth is-striped is-hoverable fixed">
+        <colgroup>
+          <col class="col-label">
+          <col><col><col><col><col>
         </colgroup>
         <thead>
           <tr>
             <th>Case</th>
             <th>Forbidden Reference</th>
             <th>TruS (ours)</th>
+            <th>FT</th>
             <th>SGU</th>
             <th>TGU</th>
           </tr>
         </thead>
         <tbody>
-          <!-- Row: Case 1 -->
+          <!-- Case 1 -->
           <tr>
             <td>Case 1</td>
             <td class="audio-cell">
-              <audio controls preload="none">
-                <source src="static/audio/case1_forbidden.wav" type="audio/wav">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/1_ref.flac" type="audio/flac">
               </audio>
             </td>
             <td class="audio-cell">
-              <audio controls preload="none">
-                <source src="static/audio/case1_trus.wav" type="audio/wav">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/1_trus.wav" type="audio/wav">
               </audio>
             </td>
             <td class="audio-cell">
-              <audio controls preload="none">
-                <source src="static/audio/case1_sgu.wav" type="audio/wav">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/1_ft.wav" type="audio/wav">
               </audio>
             </td>
             <td class="audio-cell">
-              <audio controls preload="none">
-                <source src="static/audio/case1_tgu.wav" type="audio/wav">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/1_sgu.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/1_tgu.wav" type="audio/wav">
               </audio>
             </td>
           </tr>
 
-          <!-- Row: Case 2 -->
+          <!-- Case 2 -->
           <tr>
             <td>Case 2</td>
             <td class="audio-cell">
-              <audio controls preload="none">
-                <source src="static/audio/case2_forbidden.wav" type="audio/wav">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/2_ref.flac" type="audio/flac">
               </audio>
             </td>
             <td class="audio-cell">
-              <audio controls preload="none">
-                <source src="static/audio/case2_trus.wav" type="audio/wav">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/2_trus.wav" type="audio/wav">
               </audio>
             </td>
             <td class="audio-cell">
-              <audio controls preload="none">
-                <source src="static/audio/case2_sgu.wav" type="audio/wav">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/2_ft.wav" type="audio/wav">
               </audio>
             </td>
             <td class="audio-cell">
-              <audio controls preload="none">
-                <source src="static/audio/case2_tgu.wav" type="audio/wav">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/2_sgu.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/2_tgu.wav" type="audio/wav">
+              </audio>
+            </td>
+          </tr>
+
+          <!-- Case 3 -->
+          <tr>
+            <td>Case 3</td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/3_ref.flac" type="audio/flac">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/3_trus.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/3_ft.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/3_sgu.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/3_tgu.wav" type="audio/wav">
+              </audio>
+            </td>
+          </tr>
+
+          <!-- Case 4 -->
+          <tr>
+            <td>Case 4</td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/4_ref.flac" type="audio/flac">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/4_trus.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/4_ft.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/4_sgu.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td class="audio-cell">
+              <audio controls preload="metadata">
+                <source src="static/audio/forbidden_samples/4_tgu.wav" type="audio/wav">
               </audio>
             </td>
           </tr>
@@ -162,8 +377,7 @@
       <table class="table is-fullwidth is-striped is-hoverable fixed">
         <colgroup>
           <col class="col-label">
-          <col>
-          <col>
+          <col><col>
         </colgroup>
         <thead>
           <tr>
@@ -176,12 +390,12 @@
           <tr>
             <td>Emotion A</td>
             <td class="audio-cell">
-              <audio controls preload="none">
+              <audio controls preload="metadata">
                 <source src="static/audio/emotionA_ref.wav" type="audio/wav">
               </audio>
             </td>
             <td class="audio-cell">
-              <audio controls preload="none">
+              <audio controls preload="metadata">
                 <source src="static/audio/emotionA_trus.wav" type="audio/wav">
               </audio>
             </td>
@@ -189,12 +403,12 @@
           <tr>
             <td>Emotion B</td>
             <td class="audio-cell">
-              <audio controls preload="none">
+              <audio controls preload="metadata">
                 <source src="static/audio/emotionB_ref.wav" type="audio/wav">
               </audio>
             </td>
             <td class="audio-cell">
-              <audio controls preload="none">
+              <audio controls preload="metadata">
                 <source src="static/audio/emotionB_trus.wav" type="audio/wav">
               </audio>
             </td>
