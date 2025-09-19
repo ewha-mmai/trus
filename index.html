@@ -5,33 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Erasing Your Voice Before It’s Heard: Training-free Speaker Unlearning for Zero-shot Text-to-Speech</title>
 
-  <!-- Bulma CSS -->
+  <!-- Bulma -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <!-- Font Awesome (optional for header buttons) -->
+  <!-- Font Awesome (buttons) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* 표 안 오디오를 적당한 크기로 중앙 정렬 */
-    .audio-cell {
-      text-align: center;
-      vertical-align: middle !important;
-    }
-    .audio-cell audio {
-      width: 100%;
-      max-width: 360px;   /* 필요 시 300~420 사이로 조절 */
-    }
-    .table thead th {
-      text-align: center;
-      vertical-align: middle;
-      white-space: nowrap;
-    }
-    .row-label {
-      white-space: nowrap;
-      text-align: center;
-      font-weight: 600;
-    }
-    /* 페이지 폭 제한 */
+    /* 페이지 폭 */
     .container.is-max-desktop { max-width: 980px; }
+
+    /* 공통: 테이블을 일정 폭으로 배치하기 위한 고정 레이아웃 */
+    .table.fixed { table-layout: fixed; width: 100%; }
+    .table.fixed th, .table.fixed td { text-align: center; vertical-align: middle; }
+
+    /* 첫 열(라벨) 고정폭 + 나머지 열은 동일 분배 */
+    .col-label { width: 120px; }            /* Case / Emotion 라벨 열 */
+    .audio-cell { padding: 0.75rem; }
+
+    /* 오디오 플레이어 폭/정렬 통일 */
+    .audio-cell audio {
+      display: block;
+      width: 100%;          /* 셀 안에서 가로 100% */
+      max-width: 100%;      /* 브라우저 기본 max 제약 제거 */
+      margin: 0 auto;
+    }
+
+    /* 헤더/설명 여백 */
+    .section-title { margin-bottom: .5rem; }
+    .subnote { margin-top: -6px; margin-bottom: 16px; color: #6b7280; }
   </style>
 </head>
 <body>
@@ -40,12 +41,8 @@
 <section class="hero is-light">
   <div class="hero-body has-text-centered">
     <div class="container is-max-desktop">
-      <h1 class="title is-3">
-        Erasing Your Voice Before It’s Heard: <br> Training-free Speaker Unlearning for Zero-shot Text-to-Speech
-      </h1>
-      <p class="subtitle is-6">
-        MyungJin Lee<sup>*</sup>, Eunji Lee<sup>*</sup>, Jiyoung Lee<sup>+</sup>
-      </p>
+      <h1 class="title is-3">Erasing Your Voice Before It’s Heard: <br> Training-free Speaker Unlearning for Zero-shot Text-to-Speech</h1>
+      <p class="subtitle is-6">MyungJin Lee<sup>*</sup>, Eunji Lee<sup>*</sup>, Jiyoung Lee<sup>+</sup></p>
       <p class="is-size-7"><sup>1</sup>Ewha Womans University</p>
       <p class="is-size-7">* Corresponding author: lee.jiyoung@ewha.ac.kr</p>
 
@@ -67,43 +64,42 @@
 <!-- ABSTRACT -->
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-4 has-text-centered">Abstract</h2>
-    <div class="content has-text-justified">
-      <p>
-        Modern zero-shot text-to-speech (TTS) models offer unprecedented expressivity but also pose serious crime risks, as they can synthesize voices of individuals who never consented.
-        Existing unlearning approaches, reliant on retraining, are costly and limited to speakers seen in the training set.
-        We present TruS, a training-free speaker unlearning framework that shifts the paradigm from data deletion to inference-time control.
-        TruS steers identity-specific hidden activations to suppress target speakers while preserving other attributes (e.g., prosody and emotion).
-        Experiments on F5-TTS show that TruS effectively forgets both seen and unseen speakers without retraining, establishing a scalable safeguard for speech.
-      </p>
-    </div>
+    <h2 class="title is-4 has-text-centered section-title">Abstract</h2>
+    <p class="has-text-justified">
+      Modern zero-shot text-to-speech (TTS) models offer unprecedented expressivity but also pose serious crime risks, as they can synthesize voices of individuals who never consented. Existing unlearning approaches, reliant on retraining, are costly and limited to speakers seen in the training set. We present TruS, a training-free speaker unlearning framework that shifts the paradigm from data deletion to inference-time control. TruS steers identity-specific hidden activations to suppress target speakers while preserving other attributes (e.g., prosody and emotion). Experiments on F5-TTS show that TruS effectively forgets both seen and unseen speakers without retraining, establishing a scalable safeguard for speech.
+    </p>
   </div>
 </section>
 
 <!-- MODEL COMPARISON TABLE -->
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-4 has-text-centered">Model Comparison</h2>
-    <p class="has-text-centered has-text-grey">Forbidden Reference · TruS (ours) · SGU · TGU</p>
+    <h2 class="title is-4 has-text-centered section-title">Model Comparison</h2>
+    <p class="has-text-centered subnote">Forbidden Reference · TruS (ours) · SGU · TGU</p>
 
     <div class="table-container">
-      <table class="table is-fullwidth is-striped is-hoverable">
+      <table class="table is-fullwidth is-striped is-hoverable fixed">
+        <!-- colgroup으로 첫 열 폭 고정, 나머지는 균등 -->
+        <colgroup>
+          <col class="col-label">
+          <col>
+          <col>
+          <col>
+          <col>
+        </colgroup>
         <thead>
           <tr>
-            <th class="row-label">Case</th>
+            <th>Case</th>
             <th>Forbidden Reference</th>
             <th>TruS (ours)</th>
             <th>SGU</th>
             <th>TGU</th>
-            <!-- 필요하면 FT 열 추가
-            <th>FT</th>
-            -->
           </tr>
         </thead>
         <tbody>
           <!-- Row: Case 1 -->
           <tr>
-            <td class="row-label">Case 1</td>
+            <td>Case 1</td>
             <td class="audio-cell">
               <audio controls preload="none">
                 <source src="static/audio/case1_forbidden.wav" type="audio/wav">
@@ -128,7 +124,7 @@
 
           <!-- Row: Case 2 -->
           <tr>
-            <td class="row-label">Case 2</td>
+            <td>Case 2</td>
             <td class="audio-cell">
               <audio controls preload="none">
                 <source src="static/audio/case2_forbidden.wav" type="audio/wav">
@@ -150,17 +146,6 @@
               </audio>
             </td>
           </tr>
-
-          <!-- 더 추가하려면 행 복제 -->
-          <!--
-          <tr>
-            <td class="row-label">Case 3</td>
-            <td class="audio-cell"><audio controls preload="none"><source src="static/audio/case3_forbidden.wav" type="audio/wav"></audio></td>
-            <td class="audio-cell"><audio controls preload="none"><source src="static/audio/case3_trus.wav" type="audio/wav"></audio></td>
-            <td class="audio-cell"><audio controls preload="none"><source src="static/audio/case3_sgu.wav" type="audio/wav"></audio></td>
-            <td class="audio-cell"><audio controls preload="none"><source src="static/audio/case3_tgu.wav" type="audio/wav"></audio></td>
-          </tr>
-          -->
         </tbody>
       </table>
     </div>
@@ -170,59 +155,61 @@
 <!-- EMOTION CONSISTENCY TABLE -->
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-4 has-text-centered">Emotion Consistency</h2>
-    <p class="has-text-centered has-text-grey">Reference Emotion vs. TruS (ours)</p>
+    <h2 class="title is-4 has-text-centered section-title">Emotion Consistency</h2>
+    <p class="has-text-centered subnote">Reference Emotion vs. TruS (ours)</p>
 
     <div class="table-container">
-      <table class="table is-fullwidth is-striped is-hoverable">
+      <table class="table is-fullwidth is-striped is-hoverable fixed">
+        <colgroup>
+          <col class="col-label">
+          <col>
+          <col>
+        </colgroup>
         <thead>
           <tr>
-            <th class="row-label">Emotion</th>
+            <th>Emotion</th>
             <th>Reference Emotion</th>
             <th>TruS (ours)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="row-label">Emotion A</td>
+            <td>Emotion A</td>
             <td class="audio-cell">
               <audio controls preload="none">
-                <source src="static/audio/emotion/emotionA_ref.wav" type="audio/wav">
+                <source src="static/audio/emotionA_ref.wav" type="audio/wav">
               </audio>
             </td>
             <td class="audio-cell">
               <audio controls preload="none">
-                <source src="static/audio/emotion/emotionA_trus.wav" type="audio/wav">
+                <source src="static/audio/emotionA_trus.wav" type="audio/wav">
               </audio>
             </td>
           </tr>
           <tr>
-            <td class="row-label">Emotion B</td>
+            <td>Emotion B</td>
             <td class="audio-cell">
               <audio controls preload="none">
-                <source src="static/audio/emotion/emotionB_ref.wav" type="audio/wav">
+                <source src="static/audio/emotionB_ref.wav" type="audio/wav">
               </audio>
             </td>
             <td class="audio-cell">
               <audio controls preload="none">
-                <source src="static/audio/emotion/emotionB_trus.wav" type="audio/wav">
+                <source src="static/audio/emotionB_trus.wav" type="audio/wav">
               </audio>
             </td>
           </tr>
-          <!-- 더 추가하려면 행 복제 -->
         </tbody>
       </table>
     </div>
+
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
   <div class="content has-text-centered">
-    <p>
-      This website is licensed under
-      <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
-    </p>
+    <p>This website is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
   </div>
 </footer>
 
