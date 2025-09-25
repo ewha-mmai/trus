@@ -18,6 +18,6 @@ This repository contains the official implementation of **Trus**, a training-fre
 
 ## 📑 Paper
 * **Title:** *Erasing Your Voice Before It’s Heard: Training-free Speaker Unlearning for Zero-shot Text-to-Speech*  
-* **Authors:** Myungjin Lee, Eunji Shin, Jiyoung Lee
+* **Authors:** Myungjin Lee, Eunji Shin, Jiyoung Lee<sup>+</sup>
 * **Affiliation:** Department of Artificial Intelligence, Ewha Womans University  
 * **Paper:** 
