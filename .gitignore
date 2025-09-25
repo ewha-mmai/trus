@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.venv/
+.vscode/
+data/
+logs/
+results/
+*.log
+checkpoints/
+*.ckpt
+*.pt
+*.pth
+*.onnx
+.DS_Store
