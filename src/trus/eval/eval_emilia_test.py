@@ -8,7 +8,7 @@ import glob
 import re
 import unicodedata
 from pathlib import Path
-
+from importlib.resources import files
 import numpy as np
 import torch
 
@@ -17,6 +17,16 @@ sys.path.append(os.getcwd())
 
 from f5_tts.eval.utils_eval import run_asr_wer, run_sim
 from f5_tts.eval.ecapa_tdnn import ECAPA_TDNN_SMALL
+
+
+PKG_DIR = Path(files("f5_tts").joinpath("")).resolve()
+REL_ROOT = PKG_DIR.parent.parent
+SRC_DIR = (REL_ROOT / "src").resolve()
+
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
+
+sys.path.append(os.getcwd())
 
 
 def get_args():
@@ -145,10 +155,6 @@ def _split_round_robin(arr, gpus):
 
 
 def build_testset_wer(items, gen_root, gpus, skip_missing_gen=False, gen_name_tpl="{id}.wav"):
-    """
-    Returns list[(rank, sub_test_set)] where sub_test_set yields 3-tuples:
-      (gen_wav_path, prompt_wav_path, truth_text)
-    """
     triples = []
     for ex in items:
         utt_id = _clean(ex["id"])
@@ -169,12 +175,6 @@ def build_testset_wer(items, gen_root, gpus, skip_missing_gen=False, gen_name_tp
 
 
 def build_testset_sim(items, gen_root, gpus, skip_missing_gen=False, gen_name_tpl="{id}.wav"):
-    """
-    Returns list[(rank, sub_test_set)] where sub_test_set yields 3-tuples:
-      (gen_wav_path, prompt_wav_path, truth_text)
-    This matches utils_eval.run_sim which iterates:
-      for gen_wav, prompt_wav, truth in tqdm(test_set):
-    """
     triples = []
     for ex in items:
         utt_id = _clean(ex["id"])
@@ -189,6 +189,8 @@ def build_testset_sim(items, gen_root, gpus, skip_missing_gen=False, gen_name_tp
 
         prompt_wav = ex["ref_wav"]   # reference / enrollment audio
         truth_text = ex["text"]
+
+        triples.append((gen_path, prompt_wav, truth_text))
 
     return _split_round_robin(triples, gpus)
 
@@ -231,8 +233,17 @@ def main():
             skip_missing_gen=args.skip_missing_gen, gen_name_tpl=args.gen_name_tpl
         )
 
-    asr_ckpt_dir = "F5-TTS/checkpoints/Systran/faster-whisper-large-v3"
-    wavlm_ckpt_dir = "F5-TTS/checkpoints/UniSpeech/wavlm_large_finetune.pth"
+    if args.local:
+        asr_local_dir = (REL_ROOT / "checkpoints" / "Systran" / "faster-whisper-large-v3").resolve()
+        if asr_local_dir.is_dir():
+            asr_ckpt_dir = str(asr_local_dir)
+        else:
+            print(f"[WARN] ASR local dir not found: {asr_local_dir} -> fallback to HF Hub")
+            asr_ckpt_dir = "Systran/faster-whisper-large-v3"
+    else:
+        asr_ckpt_dir = "Systran/faster-whisper-large-v3"
+    
+    wavlm_ckpt_dir = str((REL_ROOT / "checkpoints" / "UniSpeech" / "wavlm_large_finetune.pth").resolve())
 
     # Run evaluation
     full_results = []
