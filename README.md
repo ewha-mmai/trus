@@ -13,7 +13,7 @@ Experiments on F5-TTS show that TruS effectively forgets both seen and unseen sp
 
 
 ## 💡Architecture 
-![Architecture Figure](./assets/fig_architecture.pdf)
+![Architecture Figure](./assets/fig_architecture.png)
 
 ## 🔍 Dataset
 
