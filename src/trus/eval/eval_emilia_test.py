@@ -1,4 +1,4 @@
-# Evaluate with emilia_forget_test jsonl
+# for SIM-F, WER-F
 
 import argparse
 import json
