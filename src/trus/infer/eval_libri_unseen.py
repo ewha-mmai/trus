@@ -295,7 +295,7 @@ class StepwiseLayerSteering:
         self._hooks.clear()
 
 # ======================= model load =======================
-from unlearning.IdentitySteer.infer.utils_infer import (
+from trus.infer.utils_infer import (
     infer_process, load_model, load_vocoder,
     target_rms as _TARGET_RMS, cross_fade_duration as _XF,
     nfe_step as _NFE_DEFAULT, cfg_strength as _CFG,
