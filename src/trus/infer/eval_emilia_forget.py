@@ -61,7 +61,7 @@ SAVE_PICKED_JSON  = True
 RUN_TAG           = f"{RUN_TAG}_{LAYER_BAND_MODE}_{STEP_RULE}"
 
 # ======================= F5-TTS util =======================
-from unlearning.IdentitySteer.infer.utils_infer import (
+from trus.infer.utils_infer import (
     infer_process, load_model, load_vocoder,
     target_rms as _TARGET_RMS, cross_fade_duration as _XF,
     nfe_step as _NFE_DEFAULT, cfg_strength as _CFG,
