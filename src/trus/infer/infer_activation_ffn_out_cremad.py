@@ -86,14 +86,14 @@ def text_from_filename(stem: str):
         return None, (spk, tcode, emo, idx)
     return TEXT_CODE2SENTENCE[tcode], (spk, tcode, emo, idx)
 
-# ===== existinh util =====
+# ===== existing util =====
 from trus.infer.utils_infer import (
     load_model, load_vocoder, preprocess_ref_audio_text,
     mel_spec_type as _mel_spec_type_default,
     infer_process
 )
 
-# ---------- 모델 탐색/후크/저장 유틸 ----------
+# ---------- model search/hook/save util ----------
 def find_dit_and_blocks(model: nn.Module):
     for m in model.modules():
         if hasattr(m, "transformer_blocks") and isinstance(m.transformer_blocks, nn.ModuleList):
