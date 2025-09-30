@@ -1,5 +1,6 @@
-#!/usr/bin/env python3
+# for SIM-Emo
 
+#!/usr/bin/env python3
 import os
 import json
 import glob
