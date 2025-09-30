@@ -1,6 +1,6 @@
 # 🙅🏻 Erasing Your Voice Before It’s Heard: Training-free Speaker Unlearning for Zero-shot Text-to-Speech
 
-This repository contains the official implementation of **Trus**, a training-free inference-time steering method for erasing **speaker idenentity** zero-shot TTS models such as *F5-TTS*. 
+This repository contains the official implementation of **Trus**, a training-free inference-time steering method for erasing **speaker idenentity** zero-shot TTS models. 
 
 <br>
 <br>
@@ -41,7 +41,6 @@ trus/
 ├── assets/                  # Images and figures for README/docs
 ├── ckpts/                   # Model checkpoints and pretrained weights
 ├── data/                    # Experimental data and evaluation results
-│   ├── CREMAD_test/         # Test dataset from CREMAD benchmark
 │   ├── Emilia_out/               # Generated outputs and analysis results
 │   │   ├── audio/                # Synthesized or processed audio files
 │   │   ├── difference/           # Difference metrics before/after unlearning
@@ -51,8 +50,10 @@ trus/
 │   │       ├── remain_30/
 │   │       ├── remain_50/
 │   │       └── remain_mean/
+│   ├── Libri_out            # same structure as Emilia set
+│   ├── CREMAD_test/         # same structure as Emilia set
 │   
-├── src/                     # Source code for training, inference, and evaluation
+├── src/                     # Source code for inference, and evaluation
 │   ├── eval/
 │   ├── infer/
 │
