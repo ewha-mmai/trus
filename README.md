@@ -5,18 +5,11 @@ This repository contains the official implementation of **Trus**, a training-fre
 <br>
 <br>
 
-## 📌 Abstract
-Modern zero-shot text-to-speech (TTS) models offer unprecedented expressivity but also pose serious crime risks, as they can synthesize voices of individuals who never consented.
-Existing unlearning approaches, reliant on retraining, are costly and limited to speakers seen in the training set.
-We present TruS, a training-free speaker unlearning framework that shifts the paradigm from data deletion to inference-time control.
-TruS steers identity-specific hidden activations to suppress target speakers while preserving other attributes (e.g., prosody and emotion).
-Experiments on F5-TTS show that TruS effectively forgets both seen and unseen speakers without retraining, establishing a scalable safeguard for speech synthesis.
-
-<br>
-<br>
-
 ## 💡Architecture 
 ![Architecture Figure](./assets/fig_architecture.png)
+
+We present TruS, a training-free speaker unlearning framework that shifts the paradigm from data deletion to inference-time control.
+TruS steers identity-specific hidden activations to suppress target speakers while preserving other attributes (e.g., prosody and emotion).
 
 <br>
 <br>
@@ -31,7 +24,40 @@ Experiments on F5-TTS show that TruS effectively forgets both seen and unseen sp
 <br>
 <br>
 
+## Getting started
+
+### Clone our Repo
+'''bash
+conda create -n trus python=3.11  
+conda activate trus
+pip install -r trus_requirements.txt
+
+<br>
+<br>
+
 ## 🗂️ Project Structure 
+
+trus/
+├── assets/                  # Images and figures for README/docs
+├── ckpts/                   # Model checkpoints and pretrained weights
+├── data/                    # Experimental data and evaluation results
+│   ├── CREMAD_test/         # Test dataset from CREMAD benchmark
+│   ├── Emilia_out/               # Generated outputs and analysis results
+│   │   ├── audio/                # Synthesized or processed audio files
+│   │   ├── difference/           # Difference metrics before/after unlearning
+│   │   ├── forget/               # Outputs from forgetting targets
+│   │   └── remain/               # Outputs from remain samples
+│   │       ├── remain_10/
+│   │       ├── remain_30/
+│   │       ├── remain_50/
+│   │       └── remain_mean/
+│   
+├── src/                     # Source code for training, inference, and evaluation
+│   ├── eval/
+│   ├── infer/
+│
+└── README.md
+
 
 <br>
 <br>
@@ -41,3 +67,11 @@ Experiments on F5-TTS show that TruS effectively forgets both seen and unseen sp
 * **Authors:** Myungjin Lee, Eunji Shin, Jiyoung Lee<sup>+</sup>
 * **Affiliation:** Department of Artificial Intelligence, Ewha Womans University  
 * **Paper:** 
+
+
+## Acknowledgements
+**TruS** has been greatly inspired by the following amazing works and team :
+- [F5-TTS](https://github.com/SWivid/F5-TTS)
+
+We would like to thank the open-source projects for providing the foundations and inspiration for our implementation.  
+Also, We hope that releasing this model/codebase helps the community to continue advancing open, responsible, and reproducible research.
