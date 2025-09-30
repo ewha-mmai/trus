@@ -3,7 +3,6 @@
 This repository contains the official implementation of **Trus**, a training-free inference-time steering method for erasing **speaker idenentity** zero-shot TTS models. 
 
 <br>
-<br>
 
 ## 💡Architecture 
 ![Architecture Figure](./assets/fig_architecture.png)
@@ -11,7 +10,6 @@ This repository contains the official implementation of **Trus**, a training-fre
 We present TruS, a training-free speaker unlearning framework that shifts the paradigm from data deletion to inference-time control.
 TruS steers identity-specific hidden activations to suppress target speakers while preserving other attributes (e.g., prosody and emotion).
 
-<br>
 <br>
 
 ## 🔍 Dataset
@@ -22,7 +20,6 @@ TruS steers identity-specific hidden activations to suppress target speakers whi
 - CREMA-D
 
 <br>
-<br>
 
 ## Getting started
 
@@ -32,7 +29,6 @@ conda create -n trus python=3.11
 conda activate trus
 pip install -r trus_requirements.txt
 ```
-<br>
 <br>
 
 ## 🗂️ Project Structure 
@@ -61,7 +57,6 @@ trus/
 ```
 
 <br>
-<br>
 
 ## 📑 Paper
 * **Title:** *Erasing Your Voice Before It’s Heard: Training-free Speaker Unlearning for Zero-shot Text-to-Speech*  
@@ -69,7 +64,6 @@ trus/
 * **Affiliation:** Department of Artificial Intelligence, Ewha Womans University  
 * **Paper:** 
 
-<br>
 <br>
 
 ## ☘️ Acknowledgements
