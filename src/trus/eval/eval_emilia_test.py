@@ -167,8 +167,8 @@ def build_testset_wer(items, gen_root, gpus, skip_missing_gen=False, gen_name_tp
             else:
                 raise FileNotFoundError(msg)
 
-        prompt_wav = ex["ref_wav"]          # reference/prompt audio
-        truth_text = ex["text"]             # ground-truth text
+        prompt_wav = ex["ref_wav"]
+        truth_text = ex["text"]
         triples.append((gen_path, prompt_wav, truth_text))
 
     return _split_round_robin(triples, gpus)
@@ -187,7 +187,7 @@ def build_testset_sim(items, gen_root, gpus, skip_missing_gen=False, gen_name_tp
             else:
                 raise FileNotFoundError(msg)
 
-        prompt_wav = ex["ref_wav"]   # reference / enrollment audio
+        prompt_wav = ex["ref_wav"]
         truth_text = ex["text"]
 
         triples.append((gen_path, prompt_wav, truth_text))
