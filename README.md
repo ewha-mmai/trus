@@ -27,16 +27,16 @@ TruS steers identity-specific hidden activations to suppress target speakers whi
 ## Getting started
 
 ### Clone our Repo
-'''bash
+```bash
 conda create -n trus python=3.11  
 conda activate trus
 pip install -r trus_requirements.txt
-'''
+```
 <br>
 <br>
 
 ## 🗂️ Project Structure 
-'''
+```
 trus/
 ├── assets/                  # Images and figures for README/docs
 ├── ckpts/                   # Model checkpoints and pretrained weights
@@ -57,7 +57,7 @@ trus/
 │   ├── infer/
 │
 └── README.md
-'''
+```
 
 <br>
 <br>
