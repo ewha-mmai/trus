@@ -69,8 +69,10 @@ trus/
 * **Affiliation:** Department of Artificial Intelligence, Ewha Womans University  
 * **Paper:** 
 
+<br>
+<br>
 
-## Acknowledgements
+## ☘️ Acknowledgements
 **TruS** has been greatly inspired by the following amazing works and team :
 - [F5-TTS](https://github.com/SWivid/F5-TTS)
 
