@@ -23,7 +23,7 @@ TruS steers identity-specific hidden activations to suppress target speakers whi
 
 ## Getting started
 
-### Clone our Repo
+### Environment setting
 ```bash
 conda create -n trus python=3.11  
 conda activate trus
