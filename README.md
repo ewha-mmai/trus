@@ -1,6 +1,6 @@
 # 🙅🏻 Erasing Your Voice Before It’s Heard: Training-free Speaker Unlearning for Zero-shot Text-to-Speech
 
-This repository contains the official implementation of **Trus**, a training-free inference-time steering method for erasing **speaker idenentity** zero-shot TTS models. 
+This repository contains the official implementation of **Trus**, a training-free inference-time steering method for **erasing speaker idenentity** zero-shot TTS models. 
 
 <br>
 
@@ -15,9 +15,9 @@ TruS steers identity-specific hidden activations to suppress target speakers whi
 ## 🔍 Dataset
 
 **plan to add info + explanation**
-- Emilia
-- Libri 
-- CREMA-D
+- [Emilia](https://huggingface.co/datasets/amphion/Emilia-Dataset)
+- [LibriSpeech test-clean](https://www.openslr.org/12) 
+- [CREMA-D](https://github.com/CheyneyComputerScience/CREMA-D)
 
 <br>
 
