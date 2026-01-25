@@ -3,9 +3,8 @@
 
 """
 Batch activation extractor (Block OUTPUT, fixed gen text, no argparse):
-- 각 DiT 블록의 '출력(out)' 지점에서 per-step (H,) 벡터를 캡처
-- CFG cond-only 수집 옵션 제공
-- 저장: OUT_DIR/<id>/<id>_layer_{1..depth}.npy  (각 파일 shape=(steps, H))
+- Capture the per-step (H,) vector at the 'out' point of each DiT block.
+- save: OUT_DIR/<id>/<id>_layer_{1..depth}.npy  (각 파일 shape=(steps, H))
 """
 
 import os, re, json, codecs, shutil
@@ -39,10 +38,6 @@ CKPT_FILE      = Path("<Path for ckpts/F5TTS_v1_Base/model_1250000.safetensors>"
 VOCAB_TXT      = ""
 VOCODER_NAME   = "vocos"  # "vocos" | "bigvgan"
 LOAD_VOCODER_FROM_LOCAL = False
-
-# ── Fixed generated text──────────────────────────────────────────────
-GEN_TEXT       = "I loved you dangerously. More than the air that I breathe. Knew we would crash at the speed that we were going. Didn’t care if the explosion ruined me."
-# ─────────────────────────────────────────────────────────────────
 
 NFE_STEP       = 32
 CFG_STRENGTH   = 2.0
@@ -241,7 +236,7 @@ def run_one(ema_model, vocoder, ref_audio_path: Path, ref_text: str, sample_id: 
 
     # forward
     _audio, _sr, _spec = infer_process(
-        ref_audio_proc, ref_text_proc, GEN_TEXT, ema_model, vocoder,
+        ref_audio_proc, ref_text_proc, ref_text_proc, ema_model, vocoder,
         mel_spec_type=VOCODER_NAME, target_rms=TARGET_RMS, cross_fade_duration=CROSS_FADE,
         nfe_step=NFE_STEP, cfg_strength=CFG_STRENGTH, sway_sampling_coef=SWAY_COEF,
         speed=SPEED, fix_duration=FIX_DURATION, device=DEVICE,
