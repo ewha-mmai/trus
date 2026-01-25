@@ -28,10 +28,6 @@ VOCAB_TXT      = ""
 VOCODER_NAME   = "vocos"  # "vocos" | "bigvgan"
 LOAD_VOCODER_FROM_LOCAL = False
 
-# ── Fixed generated text ──────────────────────────────────────────────
-GEN_TEXT       = "I loved you dangerously. More than the air that I breathe. Knew we would crash at the speed that we were going. Didn’t care if the explosion ruined me."
-# ─────────────────────────────────────────────────────────────────
-
 NFE_STEP       = 32
 CFG_STRENGTH   = 2.0
 SWAY_COEF      = -1.0
@@ -242,7 +238,7 @@ def run_one(ema_model, vocoder, audio_path: Path, ref_text: str, sample_id: str)
 
     # forward
     _audio, _sr, _spec = infer_process(
-        ref_audio_proc, ref_text_proc, GEN_TEXT, ema_model, vocoder,
+        ref_audio_proc, ref_text_proc, ref_text_proc, ema_model, vocoder,
         mel_spec_type=VOCODER_NAME, target_rms=TARGET_RMS, cross_fade_duration=CROSS_FADE,
         nfe_step=NFE_STEP, cfg_strength=CFG_STRENGTH, sway_sampling_coef=SWAY_COEF,
         speed=SPEED, fix_duration=FIX_DURATION, device=DEVICE,
