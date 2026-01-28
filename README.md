@@ -5,7 +5,7 @@ This repository contains the official implementation of **Trus**, a training-fre
 <br>
 
 ## 💡Architecture 
-![Architecture Figure](./assets/fig_architecture.png)
+![Architecture Figure](./assets/fig_architecture.jpg)
 
 We present TruS, a training-free speaker unlearning framework that shifts the paradigm from data deletion to inference-time control.
 TruS steers identity-specific hidden activations to suppress target speakers while preserving other attributes (e.g., prosody and emotion).
