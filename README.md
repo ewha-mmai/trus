@@ -12,7 +12,7 @@
 Myungjin Lee, Eunji Shin, Jiyoung Lee<sup>+</sup>  
 Department of Artificial Intelligence, Ewha Womans University
 
-
+<br>
 ## 💡Architecture 
 ![Architecture Figure](./assets/fig_architecture.jpg)
 
@@ -21,7 +21,7 @@ This repository contains the official implementation of **Trus**, a training-fre
 We present TruS, a training-free speaker unlearning framework that shifts the paradigm from data deletion to inference-time control.
 TruS steers identity-specific hidden activations to suppress target speakers while preserving other attributes (e.g., prosody and emotion).
 
-
+<br>
 ## 🔍 Dataset
 
 **plan to add info + explanation**
@@ -29,7 +29,7 @@ TruS steers identity-specific hidden activations to suppress target speakers whi
 - [LibriSpeech test-clean](https://www.openslr.org/12) 
 - [CREMA-D](https://github.com/CheyneyComputerScience/CREMA-D)
 
-
+<br>
 ## Getting started
 
 ### Environment setting
@@ -64,7 +64,7 @@ trus/
 └── README.md
 ```
 
-
+<br>
 ## 📑 Paper
 * **Title:** *Erasing Your Voice Before It’s Heard: Training-free Speaker Unlearning for Zero-shot Text-to-Speech*  
 * **Authors:** Myungjin Lee, Eunji Shin, Jiyoung Lee<sup>+</sup>
