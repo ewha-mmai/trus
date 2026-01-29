@@ -1,4 +1,4 @@
-# 🙅🏻 [ICASSP'2026] Erasing Your Voice Before It’s Heard: Training-free Speaker Unlearning for Zero-shot Text-to-Speech
+# [ICASSP'2026] 🙅🏻 Erasing Your Voice Before It’s Heard: Training-free Speaker Unlearning for Zero-shot Text-to-Speech
 
 <p align="left">
   <a href="https://arxiv.org/abs/2601.20481">
