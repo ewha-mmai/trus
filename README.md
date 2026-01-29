@@ -1,10 +1,16 @@
 # 🙅🏻 [ICASSP'2026] Erasing Your Voice Before It’s Heard: Training-free Speaker Unlearning for Zero-shot Text-to-Speech
 
-### Authors
-<p align="center">
-<b>Myungjin Lee</b>, Eunji Shin, Jiyoung Lee<sup>+</sup><br>
-Department of Artificial Intelligence, Ewha Womans University
+<p align="left">
+  <a href="https://arxiv.org/abs/2601.20481">
+    <img src="https://img.shields.io/badge/Paper-arXiv-b31b1b">
+  </a>
+  <a href="http://mmai.ewha.ac.kr/trus">
+    <img src="https://img.shields.io/badge/Demo-Project%20Page-yellow">
+  </a>  
 </p>
+
+Myungjin Lee, Eunji Shin, Jiyoung Lee<sup>+</sup>  
+Department of Artificial Intelligence, Ewha Womans University
 
 This repository contains the official implementation of **Trus**, a training-free inference-time steering method for **erasing speaker idenentity** zero-shot TTS models. 
 
