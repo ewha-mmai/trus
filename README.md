@@ -15,7 +15,7 @@ Department of Artificial Intelligence, Ewha Womans University
 <br>
 
 ## 💡Architecture 
-![Architecture Figure](./assets/fig_architecture.pdf)
+![Architecture Figure](./assets/fig_architecture.png)
 
 This repository contains the official implementation of **Trus**, a training-free inference-time steering method for **erasing speaker idenentity** zero-shot TTS models. 
 
