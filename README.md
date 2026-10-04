@@ -92,9 +92,11 @@ Also, We hope that releasing this model/codebase helps the community to continue
 If you find this work useful for your research, please consider citing:
 
 ```bibtex
-@article{lee2026erasing,
-  title   = {Erasing Your Voice Before It's Heard: Training-free Speaker Unlearning for Zero-shot Text-to-Speech},
-  author  = {Lee, Myungjin and Shin, Eunji and Lee, Jiyoung},
-  journal = {arXiv preprint arXiv:2601.20481},
-  year    = {2026}
+@inproceedings{lee2026erasing,
+  title={Erasing Your Voice Before it’s Heard: Training-Free Speaker Unlearning for Zero-Shot Text-to-Speech},
+  author={Lee, Myungjin and Shin, Eunji and Lee, Jiyoung},
+  booktitle={ICASSP 2026-2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+  pages={17627--17631},
+  year={2026},
+  organization={IEEE}
 }
